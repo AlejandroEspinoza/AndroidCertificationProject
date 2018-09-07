@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidCertificationProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Main Fragment</string>
+
+    <!-- Main Activity Stings -->
+    <string name="main_activity_title">Bounty Hunter!</string>
+
+</resources>
