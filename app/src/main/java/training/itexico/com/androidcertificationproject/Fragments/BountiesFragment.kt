@@ -1,6 +1,7 @@
 package training.itexico.com.androidcertificationproject.Fragments
 
 import android.content.Context
+import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,8 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import training.itexico.com.androidcertificationproject.MainActivity
+import training.itexico.com.androidcertificationproject.Models.Fugitive
 
 import training.itexico.com.androidcertificationproject.R
+import training.itexico.com.androidcertificationproject.databinding.FragmentBountiesBinding
 
 class BountiesFragment : Fragment() {
 
@@ -35,7 +38,11 @@ class BountiesFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         Log.v(TAG, "Fragment onCreateView")
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bounties, container, false)
+
+        var binding : FragmentBountiesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_bounties, container, false)
+        binding.fugitive = Fugitive("Pepe pecas", false, R.drawable.android_avatar)
+        binding.executePendingBindings()
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
