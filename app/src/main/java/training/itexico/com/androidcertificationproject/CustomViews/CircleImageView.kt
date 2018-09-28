@@ -1,11 +1,9 @@
 package training.itexico.com.androidcertificationproject.CustomViews
 
 import android.content.Context
+import android.databinding.BindingAdapter
 import android.graphics.*
-import android.icu.util.Measure
 import android.os.AsyncTask
-import android.support.v4.graphics.BitmapCompat
-import android.support.v7.content.res.AppCompatResources
 import android.util.AttributeSet
 import android.view.View
 import training.itexico.com.androidcertificationproject.Models.Fugitive
@@ -14,21 +12,22 @@ import training.itexico.com.androidcertificationproject.R
 class CircleImageView : View {
     private var task : BitmapLoader? = null
     private var bitmap : Bitmap? = null
-    private var resourceId : Int? = -1
     private var paint = Paint()
     private var calculatedHeight : Int = 100
     private var calculatedWidth : Int = 100
+    private var resourceId : Int? = -1
 
-    var fugitive : Fugitive? = null
+    var fugitivo : Fugitive? = null
         set(value) {
-            field = value
             value?.let { fugitive ->
-                resourceId = fugitive.picture
-                bitmap?.recycle()
-                bitmap = null
+                field = fugitive
+                fugitive.picture?.let { id ->
+                    resourceId = id
+                    invalidate()
+                }
             }
-            this.invalidate()
         }
+
 
     constructor(context:Context) : super(context)
 
